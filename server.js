@@ -7,8 +7,10 @@ const app = express();
 //database
 const mongoose = require("./config/db");
 
-//Port
+//Port var
 const port = process.env.PORT ? process.env.PORT : "3000";
+
+//middleware libraries (for auth)
 
 //
 //
