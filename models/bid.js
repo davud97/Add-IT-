@@ -15,7 +15,7 @@ const bidSchema = new mongoose.Schema({
   },
   advertiser: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Advertisement",
+    ref: "owner",
   },
 })
 const Bid = mongoose.model("Bid", bidSchema)
