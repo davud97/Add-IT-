@@ -1,0 +1,17 @@
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <div class="index-header">
+    <h1>All Advertisements</h1>
+    <a href="/advertisements/new">Add Advertisement</a>
+  </div>
+  <div class="card-container">
+    <% advertisements.forEach((Advertisement)=> { %>
+    <a href="/advertisements/<%= Advertisement._id %>">
+      <h4><%= advertisement.brand %></h4>
+      <h4><%= advertisement.model %></h4>
+      <h4><%= advertisement.price %></h4>
+      <p>Owned by <%= listing.owner.username %></p>
+    </a>
+    <% }) %>
+  </div>
+</body>
