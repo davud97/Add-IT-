@@ -1,0 +1,36 @@
+<%- include('../partials/_navbar.ejs') %>
+
+<style>
+  h1 {
+    font-family: "Courier New", Courier, monospace sans-serif;
+    font-size: 50;
+  }
+  .sign label {
+    font-size: 20;
+    display: block;
+    margin-top: 10px;
+  }
+
+  .submit button {
+    background-color: #00ce11;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+  }
+</style>
+
+<center><h1>Sign In</h1></center>
+<form action="/auth/sign-in" method="POST">
+  <div class="sign">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" />
+    <br />
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" />
+    <br />
+    <br />
+  </div>
+  <div class="submit"><button type="submit">Sign In</button></div>
+</form>
+.

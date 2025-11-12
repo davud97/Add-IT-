@@ -1,11 +1,12 @@
 <nav>
   <% if(user) { %>
-    <p>Welcome to the app, <%= user.username %></p>
-    <a href="/ads"> View All advertisements</a>
-    <a href="/ads/new"> Create new advertisement</a>
+  <p>Welcome to the app, <%= user.username %></p>
+  <a href="/ads"> View All advertisements</a>
+  <a href="/ads/new"> Create new advertisement</a>
+  <a href="/auth/sign-out">Sign out</a>
   <% } else { %>
   <p>Welcome to Addit!</p>
-  <a href="/auth/signup">Sign up</a>
-  <a href="/auth/signin">Sign in</a>
-  <% }  %>
+  <a href="/auth/sign-up">Sign up</a>
+  <a href="/auth/sign-in">Sign in</a>
+  <% } %>
 </nav>
