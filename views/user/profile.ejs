@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Profile</title>
+  </head>
+  <body>
+    <h1>My Profile</h1>
+
+    <p><strong>Username:</strong> <%= user.username %></p>
+    <p><strong>Full Name:</strong> <%= user.fullName %></p>
+    <p><strong>Phone:</strong> <%= user.phone %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+
+    <% if (user.bio) { %>
+    <p><strong>Bio:</strong> <%= user.bio %></p>
+    <% } %>
+    <img
+      src="/uploads/<%= user.profileImage %>"
+      alt="Profile Picture"
+      width="150"
+      height="150"
+      style="border-radius: 50%; object-fit: cover"
+    />
+
+    <p>
+      <strong>Member since:</strong>
+      <%= new Date(user.createdAt).toLocaleDateString() %>
+    </p>
+
+    <p><a href="/profile/edit">Edit Profile</a></p>
+  </body>
+</html>
