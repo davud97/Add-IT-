@@ -8,11 +8,15 @@ const session = require("express-session")
 const morgan = require("morgan")
 const passUserToView = require("./middleware/pass-user-to-view")
 const isSigned = require("./middleware/isSigned")
+const methodOverride = require("method-override")
 
 const port = process.env.PORT || 3000
 
 // Parse form data
 app.use(express.urlencoded({ extended: false }))
+
+//use method override
+app.use(methodOverride("_method"))
 
 // (Husain’s)
 app.use(morgan("dev"))
@@ -41,11 +45,12 @@ app.get("/", (req, res) => {
 const authRouter = require("./routes/auth") // Husain's auth routes
 const profileRouter = require("./routes/user") // Dawood's profile routes
 const categoriesRouter = require("./routes/categories") // categories routes
-const advertisementRouter = require("./routes/advertisements"); // Ali advertisement routes
+const advertisementRouter = require("./routes/advertisements") // Ali advertisement routes
 
 app.use("/auth", authRouter)
 app.use("/profile", isSigned, profileRouter)
 app.use("/categories", isSigned, categoriesRouter)
+app.use("/advertisements", isSigned, advertisementRouter)
 
 // Start server
 app.listen(port, () => {
