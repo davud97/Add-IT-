@@ -44,7 +44,7 @@ const categoriesRouter = require("./routes/categories") // categories routes
 
 app.use("/auth", authRouter)
 app.use("/profile", isSigned, profileRouter)
-app.use("/categories", categoriesRouter)
+app.use("/categories", isSigned, categoriesRouter)
 
 // Start server
 app.listen(port, () => {

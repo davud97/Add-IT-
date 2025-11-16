@@ -12,3 +12,4 @@ router.get("/new", isSigned, categoriesController.categories_new_get)
 // Create category
 router.post("/new", isSigned, categoriesController.categories_new_post)
 module.exports = router
+// about isSigned make sure to see server.js file
