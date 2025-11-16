@@ -5,12 +5,13 @@
     <a href="/advertisements/new">Add Advertisement</a>
   </div>
   <div class="card-container">
-    <% advertisements.forEach((Advertisement)=> { %>
-    <a href="/advertisements/<%= Advertisement._id %>">
+    <% advertisements.forEach((advertisement)=> { %>
+    <a href="/advertisements/<%= advertisement._id %>">
       <h4><%= advertisement.brand %></h4>
       <h4><%= advertisement.model %></h4>
       <h4><%= advertisement.price %></h4>
-      <p>Owned by <%= listing.owner.username %></p>
+      <p>Category <%= advertisement.category.type %></p>
+      <p>Owned by <%= advertisement.owner.username %></p>
     </a>
     <% }) %>
   </div>
