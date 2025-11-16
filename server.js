@@ -45,8 +45,8 @@ const advertisementRouter = require("./routes/advertisements"); // Ali advertise
 
 app.use("/auth", authRouter)
 app.use("/profile", isSigned, profileRouter)
-app.use("/categories", categoriesRouter)
-app.use("/advertisements",isSigned,advertisementRouter)
+app.use("/categories", isSigned, categoriesRouter)
+
 // Start server
 app.listen(port, () => {
   console.log(`you are on port: ${port}`)
