@@ -1,25 +1,23 @@
-//import libraries
-const dotenv = require("dotenv")
-dotenv.config()
+require("dotenv").config()
 const express = require("express")
 const app = express()
-
-//database
 const mongoose = require("./config/db")
 
-//Port var
-const port = process.env.PORT ? process.env.PORT : "3000"
-
-//middleware libraries (for auth)
-const isSigned = require("./middleware/isSigned")
-const morgan = require("morgan")
+// Middleware libraries
 const session = require("express-session")
+const morgan = require("morgan")
 const passUserToView = require("./middleware/pass-user-to-view")
-//using middleware
-app.use(express.urlencoded())
+const isSigned = require("./middleware/isSigned")
+
+const port = process.env.PORT || 3000
+
+// Parse form data
+app.use(express.urlencoded({ extended: false }))
+
+// (Husain’s)
 app.use(morgan("dev"))
 
-//configuring the session
+// Configure session
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -27,20 +25,28 @@ app.use(
     saveUninitialized: true,
   })
 )
+
+// Make user accessible to all EJS views (Husain’s)
 app.use(passUserToView)
 
-//routing route...
-app.get("/", async (req, res) => {
+// static files
+app.use(express.static("public"))
+
+// Root route
+app.get("/", (req, res) => {
   res.render("index.ejs")
 })
 
-//requiring routes
-const authRouter = require("./routes/auth")
+// ROUTES
+const authRouter = require("./routes/auth") // Husain's auth routes
+const profileRouter = require("./routes/user") // Dawood's profile routes
+const categoriesRouter = require("./routes/categories") // categories routes
 
-//using the routes
 app.use("/auth", authRouter)
+app.use("/profile", isSigned, profileRouter)
+app.use("/categories", categoriesRouter)
 
-// listening to port
+// Start server
 app.listen(port, () => {
   console.log(`you are on port: ${port}`)
 })

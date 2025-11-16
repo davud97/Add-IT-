@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <h1>Edit Profile</h1>
+
+    <form action="/profile/edit" method="POST" enctype="multipart/form-data">
+      <div>
+        <label>Username</label>
+        <input
+          type="text"
+          name="username"
+          value="<%= user.username %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label>Full Name</label>
+        <input
+          type="text"
+          name="fullName"
+          value="<%= user.fullName %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label>Phone</label>
+        <input type="text" name="phone" value="<%= user.phone %>" required />
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" value="<%= user.email %>" required />
+      </div>
+
+      <div>
+        <label>Bio</label>
+        <textarea name="bio" rows="3"><%= user.bio || "" %></textarea>
+      </div>
+
+      <hr />
+
+      <div>
+        <label>New Password (optional)</label>
+        <input type="password" name="password" />
+      </div>
+
+      <div>
+        <label>Confirm New Password</label>
+        <input type="password" name="confirmPassword" />
+      </div>
+
+      <div>
+        <label>Profile Picture</label>
+        <input type="file" name="profileImage" />
+      </div>
+
+      <button type="submit">Save changes</button>
+    </form>
+
+    <p><a href="/profile">Cancel</a></p>
+  </body>
+</html>

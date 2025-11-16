@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>All Categories</h1>
+
+    <ul>
+      <% categories.forEach(cat => { %>
+      <li>
+        <strong>Types:</strong> <%= cat.type.join(", ") %><br />
+        <strong>Description:</strong> <%= cat.description %><br />
+      </li>
+      <hr />
+      <% }) %>
+    </ul>
+
+    <a href="/categories/new">Create New Category</a>
+  </body>
+</html>

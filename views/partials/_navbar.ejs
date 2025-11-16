@@ -1,11 +1,20 @@
 <nav>
-  <% if(user) { %>
+  <% if (user) { %>
   <p>Welcome to the app, <%= user.username %></p>
-  <a href="/ads"> View All advertisements</a>
-  <a href="/ads/new"> Create new advertisement</a>
+
+  <a href="/ads">View All Advertisements</a>
+  <a href="/ads/new">Create New Advertisement</a>
+
+  <!-- Dawood profile link -->
+  <a href="/profile">My Profile</a>
+
+  <!-- Husain's c sign-out route -->
   <a href="/auth/sign-out">Sign out</a>
+
   <% } else { %>
   <p>Welcome to Addit!</p>
+
+  <!-- Husain's t auth routes -->
   <a href="/auth/sign-up">Sign up</a>
   <a href="/auth/sign-in">Sign in</a>
   <% } %>
