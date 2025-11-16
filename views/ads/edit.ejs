@@ -1,0 +1,32 @@
+<%- include('../partials/_navbar.ejs') %>
+<h1> Edit Advertisement: <%= advertisement.brand %> - <%= advertisement.model %></h1>
+<form action="/users/<%= user._id %>/advertisements/<%= advertisement._id %>?_method=PUT" method="POST">
+  <label for="brand">Brand</label>
+  <input type="text" name="brand" id="brand" value="<%= advertisement.brand %>">
+  <br>
+  <label for="model">Model</label>
+  <input type="text" name="model" id="model" value="<%= advertisement.model %>">
+  <br>
+  <label for="price">Price</label>
+  <input type="text"name="price" id="price" min="0" value="<%= advertisement.price %>
+  <br>
+  <label for="mileage">Mileage</label>
+  <input type="text" name="mileage" id="mileage" min="0" value="<%= advertisement.mileage %>">
+  <br>
+  <label for="location">Location</label>
+  <select name="location" id="location" value="<%= advertisement.location %>">
+  <br>
+   <label for="contactNumber">Contact Number</label>
+  <select name="contactNumber" id="contactNumber" value="<%= advertisement.contactNumber %>">
+  <br>
+  <label for="saleMode">Sale Mode<select name="saleMode" id="saleMode">
+    <option value="fixed" <%= advertisement.saleMode === "fixed" ? "selected": "" %>>Fixed</option>
+    <option value="bid" <%= advertisement.saleMode === "bid" ? "selected": "" %>>Bid</option>
+
+  </select>
+  </label>
+  <button type="submit">Update Advertisement</button>
+</form>
+
+
+
