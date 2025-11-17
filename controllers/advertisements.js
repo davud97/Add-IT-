@@ -16,7 +16,7 @@ exports.advertisement_create_post = async (req, res) => {
 
 exports.advertisement_create_get = async (req, res) => {
   const categories = await Category.find()
-  res.render("advertisements/new.ejs", { categories })
+  res.render("advertisements/new.ejs", { categories: categories })
 }
 
 exports.advertisement_show_get = async (req, res) => {

@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>All Categories</h1>
+<%- include('../partials/_navbar.ejs') %>
 
-    <ul>
-      <% categories.forEach(cat => { %>
-      <li>
-        <strong>Types:</strong> <%= cat.type.join(", ") %><br />
-        <strong>Description:</strong> <%= cat.description %><br />
-      </li>
-      <hr />
-      <% }) %>
-    </ul>
+<h1>All Categories</h1>
 
-    <a href="/categories/new">Create New Category</a>
-  </body>
-</html>
+<ul>
+  <% categories.forEach(category => { %>
+  <li>
+    <strong><%= category.type %></strong>
+  </li>
+  <% }) %>
+</ul>
+
+<br />
+<a href="/categories/new">Create New Category</a>
