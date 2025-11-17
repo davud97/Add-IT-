@@ -27,4 +27,8 @@
   <% } else { %>
   <p>You don't own this, <%= advertisement.owner.username %> does!</p>
   <% } %>
+  
+  <% if (advertisement.saleMode === 'bid') { %>
+  <a href="/bids/<%= advertisement._id %>">Place/View Bids</a>
+<% } %>
 </body>

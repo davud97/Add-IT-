@@ -46,11 +46,13 @@ const authRouter = require("./routes/auth") // Husain's auth routes
 const profileRouter = require("./routes/user") // Dawood's profile routes
 const categoriesRouter = require("./routes/categories") // categories routes
 const advertisementRouter = require("./routes/advertisements") // Ali advertisement routes
+const bidsRoutes = require("./routes/bids")
 
 app.use("/auth", authRouter)
 app.use("/profile", isSigned, profileRouter)
 app.use("/categories", isSigned, categoriesRouter)
 app.use("/advertisements", isSigned, advertisementRouter)
+app.use("/bids", bidsRoutes)
 
 // Start server
 app.listen(port, () => {

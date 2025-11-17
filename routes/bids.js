@@ -1,15 +1,10 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const bidCtrl = require("../controllers/bids");
 
-const bidCtrl = require('../controllers/bids');
-
-// Routes/ Call API's
-router.get('/', bidCtrl.biding_index_get);
-router.get('/new', bidCtrl.biding_create_get);
-router.post('/', bidCtrl.biding_create_post);
-router.get('/:bidingId', bidCtrl.biding_show_get);
-
-router.get("/:bidingId/edit", bidCtrl.biding_edit_get);
-router.put("/:bidingId", bidCtrl.biding_update_put);
-
+//routes
+router.get("/mine", bidCtrl.bid_index_all_get);
+router.get("/:advertisementId", bidCtrl.bid_index_get);
+router.post("/:advertisementId", bidCtrl.bid_create_post);
+router.post("/:advertisementId/finalize", bidCtrl.bid_finalize_post);
 
 module.exports = router;

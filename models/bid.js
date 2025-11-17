@@ -1,5 +1,11 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+
 const bidSchema = new mongoose.Schema({
+  advertisement: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Advertisement",
+    required: true,
+  },
   currentBid: {
     type: Number,
     required: true,
@@ -7,16 +13,13 @@ const bidSchema = new mongoose.Schema({
   },
   bidStatus: {
     type: Boolean,
-    default: false,
+    default: true,
   },
-  bidder: {
+  lastBidder: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  advertiser: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "owner",
-  },
-})
-const Bid = mongoose.model("Bid", bidSchema)
-module.exports = Bid
+});
+
+const Bid = mongoose.model("Bid", bidSchema);
+module.exports = Bid;
