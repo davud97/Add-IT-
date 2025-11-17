@@ -1,0 +1,20 @@
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+
+  <h1>My Bids</h1>
+
+  <% if (bids.length === 0) { %>
+    <p>You haven’t placed any bids yet.</p>
+  <% } else { %>
+    <ul>
+      <% bids.forEach(bid => { %>
+        <li>
+          <a href="/bids/<%= bid.advertisement._id %>">
+            <%= bid.advertisement.brand %>
+          </a>
+          : <%= bid.currentBid %>  BHD
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</body>
