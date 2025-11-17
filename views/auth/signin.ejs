@@ -1,14 +1,18 @@
 <%- include('../partials/_navbar.ejs') %>
 
 <style>
+  body {
+    background-image: url("/background/1.jpg");
+    background-size: cover;
+  }
   h1 {
     font-family: "Courier New", Courier, monospace sans-serif;
-    font-size: 50;
+    font-size: 50px;
   }
   .sign label {
-    font-size: 20;
+    font-size: 20px;
     display: block;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .submit button {
@@ -18,8 +22,21 @@
     border-radius: 5px;
     border: none;
   }
-</style>
+  input {
+    border-radius: 10px;
+    height: 30px;
+  }
 
+  .top-right-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: auto;
+    z-index: 999;
+  }
+</style>
+<img src="/logo/logo.png" class="top-right-logo" />
 <center><h1>Sign In</h1></center>
 <form action="/auth/sign-in" method="POST">
   <div class="sign">

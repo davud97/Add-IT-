@@ -4,10 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <style>
+      body {
+        background-image: url("/background/1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .bottom-logo {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 450px;
+        height: auto;
+        z-index: 999;
+      }
+
+      .title-image {
+        display: block;
+        margin: 80px auto 20px auto;
+        width: 400px;
+        height: auto;
+      }
+
+      h2 {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <%- include('./partials/_navbar') %>
-    <h1>AddIt</h1>
-    <h2>An online Marketplace to sale you products faster</h2>
+    <h2>An online Marketplace to sell you products faster</h2>
+    <img src="/logo/addit.png" class="title-image" />
+    <img src="/logo/logo.png" class="bottom-logo" />
   </body>
 </html>

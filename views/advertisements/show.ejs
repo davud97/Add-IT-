@@ -1,12 +1,30 @@
+<style>
+  body {
+    background-image: url("/background/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+
+    .top-right-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: auto;
+      z-index: 999;
+    }
+  }
+</style>
 <body>
   <%-include('../partials/_navbar.ejs')%>
-
+  <img src="/logo/logo.png" class="top-right-logo" />
   <h1>
-    advertisement for <%= advertisement.brand %> - <%= advertisement.model %>
+    advertisement for <%= advertisement.brand %> <%= advertisement.model %>
   </h1>
   <h2>Details</h2>
   <p>Price: $<%= advertisement.price %></p>
-  <p>Mileage: $<%= advertisement.mileage %> KM</p>
+  <p>Mileage: <%= advertisement.mileage %> KM</p>
   <p>Location: <%= advertisement.location %></p>
 
   <p>Sale Mode: <%= advertisement.saleMode %></p>
@@ -26,9 +44,7 @@
 
   <% } else { %>
   <p>You don't own this, <%= advertisement.owner.username %> does!</p>
-  <% } %>
-  
-  <% if (advertisement.saleMode === 'bid') { %>
+  <% } %> <% if (advertisement.saleMode === 'bid') { %>
   <a href="/bids/<%= advertisement._id %>">Place/View Bids</a>
-<% } %>
+  <% } %>
 </body>

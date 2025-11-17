@@ -1,44 +1,58 @@
+<style>
+  body {
+    background-image: url("/background/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
 
+    .top-right-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: auto;
+      z-index: 999;
+    }
+  }
+</style>
 
 <body>
-
-<%-include('../partials/_navbar.ejs')%>
-
+  <%-include('../partials/_navbar.ejs')%>
+  <img src="/logo/logo.png" class="top-right-logo" />
   <h1>Add a new Advertisement</h1>
   <form method="POST" action="/advertisements">
     <label for="brand">Brand:</label>
     <input type="text" name="brand" id="brand" />
-    <br>
+    <br />
     <label for="model">Model:</label>
     <input type="text" name="model" id="model" />
-    <br>
+    <br />
     <label for="price">Price:</label>
     <input type="number" name="price" id="price" min="0" />
-    <br>
+    <br />
     <label for="mileage">Mileage:</label>
     <input type="number" name="mileage" id="mileage" min="0" />
-    <br>
-        <label for="location">Location:</label>
-    <input type="text" name="location" id="location"  />
-    <br>
+    <br />
+    <label for="location">Location:</label>
+    <input type="text" name="location" id="location" />
+    <br />
     <label for="contactNumber">ContactNumber:</label>
-    <input type="number" name="contactNumber" id="contactNumber"  />
-    <br>
- <label for="category">Category</label>
-  <select name="category" id="category">
-    <% categories.forEach((category)=>{%>
+    <input type="number" name="contactNumber" id="contactNumber" />
+    <br />
+    <label for="category">Category</label>
+    <select name="category" id="category">
+      <% categories.forEach((category)=>{%>
       <option value="<%= category._id  %>"><%= category.type %></option>
-    <% }) %>
-</select>
-    <br>
-  <label for="saleMode">saleMode</label>
-  <select name="saleMode" id="saleMode">
-    <option value="fixed">Fixed</option>
-    <option value="bid">Bid</option>
-  </select>
-  <br>
+      <% }) %>
+    </select>
+    <br />
+    <label for="saleMode">saleMode</label>
+    <select name="saleMode" id="saleMode">
+      <option value="fixed">Fixed</option>
+      <option value="bid">Bid</option>
+    </select>
+    <br />
     <button type="submit">Add Advertisement</button>
   </form>
-
 </body>
-

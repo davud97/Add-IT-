@@ -1,6 +1,25 @@
+  <style>
+    body {
+      background-image: url("/background/1.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+
+        .top-right-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: auto;
+    z-index: 999;
+  }
+    }
+  </style>
 <%- include('../partials/_navbar.ejs') %>
+  <img src="/logo/logo.png" class="top-right-logo" />
 <h1> Edit Advertisement: <%= advertisement.brand %> - <%= advertisement.model %></h1>
-<form action="/advertisements/<%= advertisement._id %>/?_method=PUT" method="POST">
+<form action="/advertisements/<%= advertisement._id %>?_method=PUT" method="POST">
   <label for="brand">Brand</label>
   <input type="text" name="brand" id="brand" value="<%= advertisement.brand %>">
   <br>
@@ -14,19 +33,15 @@
   <input type="text" name="mileage" id="mileage" min="0" value="<%= advertisement.mileage %>">
   <br>
   <label for="location">Location</label>
-  <select name="location" id="location" value="<%= advertisement.location %>">
+  <input type= "text" name="location" id="location" value="<%= advertisement.location %>">
   <br>
-  <label for="contactNumber">Contact Number</label>
-  <select name="contactNumber" id="contactNumber" value="<%= advertisement.contactNumber %>">
+   <label for="contactNumber">Contact Number</label>
+  <input type="text" name="contactNumber" id="contactNumber" value="<%= advertisement.contactNumber %>">
   <br>
   <label for="saleMode">Sale Mode<select name="saleMode" id="saleMode">
     <option value="fixed" <%= advertisement.saleMode === "fixed" ? "selected": "" %>>Fixed</option>
     <option value="bid" <%= advertisement.saleMode === "bid" ? "selected": "" %>>Bid</option>
-
   </select>
   </label>
   <button type="submit">Update Advertisement</button>
 </form>
-
-
-

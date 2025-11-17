@@ -1,5 +1,22 @@
 <%- include('../partials/_navbar.ejs') %>
+<style>
+  body {
+    background-image: url("/background/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
 
+    .top-right-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: auto;
+      z-index: 999;
+    }
+  }
+</style>
 <h1>Create New Category</h1>
 
 <form action="/categories" method="POST">
