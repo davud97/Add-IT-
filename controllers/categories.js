@@ -1,22 +1,20 @@
 const Category = require("../models/category")
 
-// GET show new category form **************
-exports.categories_new_get = (req, res) => {
+// GET here runs to show all the available categories from DB
+exports.category_index_get = async function (req, res) {
+  const categories = await Category.find()
+  res.render("categories/index.ejs", {
+    categories: categories,
+  })
+}
+
+// this GET is to show new category
+exports.category_create_get = (req, res) => {
   res.render("categories/new.ejs")
 }
 
-// POST create new category ***************
-exports.categories_new_post = async (req, res) => {
-  await Category.create({
-    type: req.body.type,
-    description: req.body.description,
-  })
-
+// and this POST is hen the user submits the form, take the data they typed and save it in mongoDB
+exports.category_create_post = async (req, res) => {
+  await Category.create(req.body)
   res.redirect("/categories")
-}
-
-// GET list all categories ****************
-exports.categories_index_get = async (req, res) => {
-  const categories = await Category.find()
-  res.render("categories/index.ejs", { categories })
 }
