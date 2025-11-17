@@ -32,7 +32,7 @@ exports.auth_signup_post = async (req, res) => {
   })
 
   //successful signup message OR redirect
-  res.send(`Welcome ${user.username}!`)
+  res.redirect("/auth/sign-in")
 }
 
 //sign in page

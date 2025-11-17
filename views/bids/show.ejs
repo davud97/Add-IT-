@@ -1,6 +1,24 @@
+<style>
+  body {
+    background-image: url("/background/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+
+    .top-right-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: auto;
+      z-index: 999;
+    }
+  }
+</style>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-
+  <img src="/logo/logo.png" class="top-right-logo" />
   <h1><%= ad.brand %> - <%= ad.model %></h1>
   <h1><%= ad.brand %> - <%= ad.model %></h1>
   <p>Starting Bid: <%= ad.price %> BHD</p>
@@ -9,32 +27,30 @@
 
   <h2>Bidding</h2>
 
-  <% if (user._id !== ad.owner._id && (!bid || bid.bidStatus)) { %>
-    <% if (bid) { %>
-      <p>Current Highest Bid: <%= bid.currentBid %> BHD</p>
-    <% } %>
-    <form method="POST" action="/bids/<%= ad._id %>">
-      <label>Your Bid:</label>
-      <input
-        type="number"
-        name="currentBid"
-        min="<%= bid ? bid.currentBid + 1 : ad.price %>"
-        required
-      />
-      <button type="submit">Place Bid</button>
-    </form>
-  <% } else if (bid && !bid.bidStatus) { %>
-    <p>Bidding closed.</p>
-    <p>Winner: <%= bid.lastBidder.username %></p>
-    <% if (ad.owner._id.equals(user._id)) { %>
-      <p>Winner's Phone Number: <%= bid.lastBidder.phone %></p>
-    <% } %>
-    <p>Winning Bid: <%= bid.currentBid %> BHD</p>
+  <% if (user._id !== ad.owner._id && (!bid || bid.bidStatus)) { %> <% if (bid)
+  { %>
+  <p>Current Highest Bid: <%= bid.currentBid %> BHD</p>
   <% } %>
-
-  <% if (ad.owner._id.equals(user._id) && bid && bid.bidStatus) { %>
-    <form method="POST" action="/bids/<%= ad._id %>/finalize">
-      <button type="submit">End Auction</button>
-    </form>
+  <form method="POST" action="/bids/<%= ad._id %>">
+    <label>Your Bid:</label>
+    <input
+      type="number"
+      name="currentBid"
+      min="<%= bid ? bid.currentBid + 1 : ad.price %>"
+      required
+    />
+    <button type="submit">Place Bid</button>
+  </form>
+  <% } else if (bid && !bid.bidStatus) { %>
+  <p>Bidding closed.</p>
+  <p>Winner: <%= bid.lastBidder.username %></p>
+  <% if (ad.owner._id.equals(user._id)) { %>
+  <p>Winner's Phone Number: <%= bid.lastBidder.phone %></p>
+  <% } %>
+  <p>Winning Bid: <%= bid.currentBid %> BHD</p>
+  <% } %> <% if (ad.owner._id.equals(user._id) && bid && bid.bidStatus) { %>
+  <form method="POST" action="/bids/<%= ad._id %>/finalize">
+    <button type="submit">End Auction</button>
+  </form>
   <% } %>
 </body>
