@@ -5,46 +5,102 @@
     background-repeat: no-repeat;
     background-position: center;
     min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
 
-    .top-right-logo {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 80px;
-      height: auto;
-      z-index: 999;
-    }
+  .top-right-logo {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    width: 80px;
+    height: auto;
+    z-index: 999;
+  }
+
+  .ad-container {
+    max-width: 600px;
+    margin: 100px auto 50px auto;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  a:hover {
+    background-color: #00a80d;
+  }
+
+  button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+  }
+
+  button:hover {
+    background-color: #cc0000;
+  }
+
+  .owner-message {
+    font-style: italic;
+    margin-top: 10px;
   }
 </style>
+
 <body>
-  <%-include('../partials/_navbar.ejs')%>
-  <img src="/logo/logo.png" class="top-right-logo" />
-  <h1>
-    advertisement for <%= advertisement.brand %> <%= advertisement.model %>
-  </h1>
-  <h2>Details</h2>
-  <p>Price: $<%= advertisement.price %></p>
-  <p>Mileage: <%= advertisement.mileage %> KM</p>
-  <p>Location: <%= advertisement.location %></p>
+  <%- include('../partials/_navbar.ejs') %>
 
-  <p>Sale Mode: <%= advertisement.saleMode %></p>
-  <p>Contact Number: <%= advertisement.contactNumber %></p>
-  <h2>Owner</h2>
-  <% if (advertisement.owner._id.equals(user._id)) { %>
-  <p>You own this advertisement!</p>
-  <a href="/advertisements/<%= advertisement._id %>/edit"
-    >Edit this advertisement</a
-  >
-  <form
-    action="/advertisements/<%= advertisement._id %>?_method=DELETE"
-    method="POST"
-  >
-    <button type="submit">Delete this advertisement</button>
-  </form>
+  <div class="ad-container">
+    <h1>
+      Advertisement for <%= advertisement.brand %> <%= advertisement.model %>
+    </h1>
 
-  <% } else { %>
-  <p>You don't own this, <%= advertisement.owner.username %> does!</p>
-  <% } %> <% if (advertisement.saleMode === 'bid') { %>
-  <a href="/bids/<%= advertisement._id %>">Place/View Bids</a>
-  <% } %>
+    <p>Price: $<%= advertisement.price %></p>
+    <p>Mileage: <%= advertisement.mileage %> KM</p>
+    <p>Location: <%= advertisement.location %></p>
+    <p>Sale Mode: <%= advertisement.saleMode %></p>
+    <p>Contact Number: <%= advertisement.contactNumber %></p>
+
+    <% if (advertisement.owner._id.equals(user._id)) { %>
+    <p class="owner-message">You own this advertisement!</p>
+    <a href="/advertisements/<%= advertisement._id %>/edit"
+      >Edit this advertisement</a
+    >
+    <form
+      action="/advertisements/<%= advertisement._id %>?_method=DELETE"
+      method="POST"
+    >
+      <button type="submit">Delete this advertisement</button>
+    </form>
+    <% } else { %>
+    <p class="owner-message">
+      You don't own this, <%= advertisement.owner.username %> does!
+    </p>
+    <% } %> <% if (advertisement.saleMode === 'bid') { %>
+    <a href="/bids/<%= advertisement._id %>">Place/View Bids</a>
+    <% } %>
+  </div>
 </body>
