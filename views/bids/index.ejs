@@ -6,26 +6,16 @@
     background-position: center;
     min-height: 100vh;
     margin: 0;
-    color: black;
-    position: relative;
     font-family: Arial, sans-serif;
+    position: relative;
   }
 
   .top-right-logo {
     position: absolute;
-    top: 20px;
+    top: 1px;
     right: 20px;
     width: 80px;
     height: auto;
-    z-index: 999;
-  }
-
-  .welcome-message {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: black;
-    font-size: 18px;
     z-index: 999;
   }
 
@@ -49,37 +39,29 @@
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    text-decoration: none;
-    transition: 0.3s;
     cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
   }
 
   .bid-card:hover {
     transform: scale(1.03);
-    border-color: black;
+    border-color: #00ce11;
   }
 
   .bid-card h4,
   .bid-card p {
     margin: 5px 0;
   }
-
-  .bid-card a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    font-weight: bold;
-  }
 </style>
 
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <img src="/logo/logo.png" class="top-right-logo" />
 
   <h1>My Bids</h1>
 
   <% if (bids.length === 0) { %>
-  <p>You haven’t placed any bids yet.</p>
+  <p style="text-align: center">You haven’t placed any bids yet.</p>
   <% } else { %>
   <div class="bid-container">
     <% bids.forEach(bid => { %>

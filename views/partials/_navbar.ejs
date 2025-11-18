@@ -1,22 +1,85 @@
+<style>
+  nav {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  nav .left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  nav .welcome {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+  }
+
+  nav .links {
+    display: flex;
+    gap: 20px;
+  }
+
+  nav .links a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.2s;
+  }
+
+  nav .links a:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  nav .logo {
+    height: 35px;
+    opacity: 0.85;
+  }
+</style>
+
 <nav>
   <% if (user) { %>
-  <p>Welcome to the app, <%= user.username %></p>
 
-  <a href="/advertisements">View All Advertisements</a>
-  <a href="/advertisements/new">Create New Advertisement</a>
-  <a href="/bids/mine">My Bids</a>
+  <div class="left">
+    <p class="welcome">Welcome, <%= user.username %></p>
 
-  <!-- Dawood profile link -->
-  <a href="/profile">My Profile</a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/advertisements">View All Advertisements</a>
+      <a href="/advertisements/new">Create New Advertisement</a>
+      <a href="/bids/mine">My Bids</a>
+      <a href="/profile">My Profile</a>
+      <a href="/auth/sign-out">Sign out</a>
+    </div>
+  </div>
 
-  <!-- Husain's c sign-out route -->
-  <a href="/auth/sign-out">Sign out</a>
+  <img src="/logo.png" class="logo" />
 
   <% } else { %>
-  <p>Welcome to Addit!</p>
 
-  <!-- Husain's t auth routes -->
-  <a href="/auth/sign-up">Sign up</a>
-  <a href="/auth/sign-in">Sign in</a>
+  <div class="left">
+    <p class="welcome">Welcome to AddIt!</p>
+
+    <div class="links">
+      <a href="/auth/sign-up">Sign up</a>
+      <a href="/auth/sign-in">Sign in</a>
+    </div>
+  </div>
+
+  <img src="/logo.png" class="logo" />
+
   <% } %>
 </nav>
