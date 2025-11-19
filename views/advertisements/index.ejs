@@ -51,9 +51,9 @@
     <% advertisements.forEach((advertisement) => { %>
     <div class="ad-card">
       <a href="/advertisements/<%= advertisement._id %>">
-        <h4><%= advertisement.brand %></h4>
-        <h4><%= advertisement.model %></h4>
-        <h4><%= advertisement.price %></h4>
+        <h4>Brand <%= advertisement.brand %></h4>
+        <h4>Year - <%= advertisement.model %></h4>
+        <h4>BHD <%= advertisement.price %></h4>
         <p>Owned by <%= advertisement.owner.username %></p>
       </a>
     </div>
