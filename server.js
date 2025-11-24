@@ -52,7 +52,10 @@ app.use("/auth", authRouter)
 app.use("/profile", isSigned, profileRouter)
 app.use("/categories", isSigned, categoriesRouter)
 app.use("/advertisements", isSigned, advertisementRouter)
-app.use("/bids", bidsRoutes)
+app.use("/bids", isSigned, bidsRoutes)
+app.use((req,res,next) => {
+  res.redirect("/auth/sign-in")
+})
 
 // Start server
 app.listen(port, () => {
