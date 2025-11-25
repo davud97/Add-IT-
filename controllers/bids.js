@@ -45,7 +45,6 @@ exports.bid_finalize_post = async (req, res) => {
   if (!ad.owner.equals(req.session.user._id)) {
     return res.redirect(`/bids/${ad._id}`);
   }
-
   bid.bidStatus = false;
   await bid.save();
 
