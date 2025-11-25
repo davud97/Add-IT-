@@ -23,12 +23,10 @@
 
 ### ***Technologies used***
 * Utilizing EJS Templates
-* Session-based authentication
-    * middleware restriction for authentication
-* Full CRUD functionality.
-* Deployed online
-* ERD template
-* Development road (trello)
+* MongoDB
+* Express
+* Node js
+* Git
 
 ***
 ### Database ERD
@@ -43,6 +41,13 @@
 - [x] Bidders cannot set bids less than the last hight bet
 - [x] Users cannot make changes on the details of other users ads
 - [x] Bids cannot be modified or deleted once placed
+
+***
+### Future enhancement
+- Enabling users to upload image for ads
+- Providing users the option to set a starting and ending date for bids
+- More friendly user Interface
+- Validation for more secure passwords
 
 ***
 ### **Credits**
